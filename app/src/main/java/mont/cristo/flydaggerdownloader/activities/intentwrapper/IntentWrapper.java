@@ -23,6 +23,9 @@ public abstract class IntentWrapper {
         this.intent = intent;
     }
 
+    /**
+     * Concrete intent wrapper must use this method to add their data into intent and start another component
+     */
     public abstract void transport();
 
 }

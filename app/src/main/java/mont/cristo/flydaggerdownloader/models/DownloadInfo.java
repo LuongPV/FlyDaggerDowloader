@@ -34,4 +34,16 @@ public class DownloadInfo implements Serializable {
         // Default this download info is not in queue
         status = DownloadStatus.NOT_IN_QUEUE;
     }
+
+    public String getUrlRemote() {
+        return urlRemote;
+    }
+
+    public String getUrlLocal() {
+        return urlLocal;
+    }
+
+    public DownloadStatus getStatus() {
+        return status;
+    }
 }

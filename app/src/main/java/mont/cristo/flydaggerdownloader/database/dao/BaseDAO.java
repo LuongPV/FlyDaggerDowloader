@@ -1,12 +1,12 @@
 package mont.cristo.flydaggerdownloader.database.dao;
 
-import android.database.sqlite.SQLiteDatabase;
+import mont.cristo.flydaggerdownloader.database.DatabaseManager;
 
 public abstract class BaseDAO implements DAO {
 
-    protected SQLiteDatabase db;
+    protected DatabaseManager databaseManager;
 
-    public BaseDAO(SQLiteDatabase db) {
-        this.db = db;
+    public BaseDAO(DatabaseManager databaseManager) {
+        this.databaseManager = databaseManager;
     }
 }

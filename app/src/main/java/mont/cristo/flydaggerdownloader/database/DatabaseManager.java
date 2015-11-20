@@ -100,4 +100,33 @@ public class DatabaseManager extends SQLiteOpenHelper {
             }
         }
     }
+
+    /**
+     * Bad code structure, need optimize
+     */
+    public void execSQL(String sql) {
+        SQLiteDatabase db = null;
+        try {
+            db = dbConnection.open();
+            db.execSQL(sql);
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
+
+    /**
+     * Bad code structure, need optimize
+     */
+    public SQLiteDatabase openConnection() {
+        return dbConnection.open();
+    }
+
+    /**
+     * Bad code structure, need optimize
+     */
+    public void closeConnection() {
+        dbConnection.close();
+    }
 }
