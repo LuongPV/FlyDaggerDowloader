@@ -68,7 +68,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = null;
         try {
             db = dbConnection.open();
-            for (DAO dao : DAOCreator.getAllDAO(db)) {
+            for (DAO dao : DAOCreator.getAllDAO(this)) {
                 dao.initTable();
             }
         } finally {
@@ -91,7 +91,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = null;
         try {
             db = dbConnection.open();
-            for (DAO dao : DAOCreator.getAllDAO(db)) {
+            for (DAO dao : DAOCreator.getAllDAO(this)) {
                 dao.deleteTable();
             }
         } finally {
