@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">FlyDaggerDownloader</string>
+    <string name="app_name">Fly Dagger Downloader</string>
+
+    <!-- Splash screen -->
+    <string name="message_splash_description">Fly Dagger Downloader</string>
+
 </resources>

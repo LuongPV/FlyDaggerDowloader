@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MenuActivity" >
+        <activity android:name=".activities.menu.MenuActivity" >
         </activity>
         <activity android:name=".activities.downloadlist.DownloadListActivity" >
         </activity>
