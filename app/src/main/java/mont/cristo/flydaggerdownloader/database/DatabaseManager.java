@@ -11,7 +11,7 @@ import mont.cristo.flydaggerdownloader.helpers.logger.Logger;
 public class DatabaseManager extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 1;
 
     // Database Name
     public static final String DATABASE_NAME = "fly_dagger_downloader.sqlite";
