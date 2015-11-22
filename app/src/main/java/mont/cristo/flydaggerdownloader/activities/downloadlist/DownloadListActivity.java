@@ -14,6 +14,6 @@ public class DownloadListActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        startActivity(new DownloadDetailIntentWrapper(this, new DownloadInfo(null, null, 0, 0)));
+        startActivity(new DownloadDetailIntentWrapper(this, new DownloadInfo()));
     }
 }

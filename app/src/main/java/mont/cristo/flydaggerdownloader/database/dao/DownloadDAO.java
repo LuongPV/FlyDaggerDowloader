@@ -1,8 +1,10 @@
 package mont.cristo.flydaggerdownloader.database.dao;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import mont.cristo.flydaggerdownloader.database.DatabaseManager;
@@ -38,6 +40,7 @@ public class DownloadDAO extends BaseDAO {
 
     /**
      * Insert download record by list
+     *
      * @param listDownloadInfo List need to add
      * @return Total record inserted successfully
      */
@@ -55,6 +58,7 @@ public class DownloadDAO extends BaseDAO {
 
     /**
      * Insert download record
+     *
      * @param downloadInfo DownloadInfo object need to add
      * @return Is record added successfully
      */
@@ -68,11 +72,37 @@ public class DownloadDAO extends BaseDAO {
             values.put(COLUMN_STATUS, downloadInfo.getStatus().getStatusCode());
             result = db.insert(TABLE, null, values);
         } catch (Exception e) {
-            Logger.warn("Insert DownloadInfo failed, detail: " + e);
+            Logger.warn("Cannot insert DownloadInfo: " + downloadInfo, e);
         } finally {
             databaseManager.closeConnection();
         }
         return result > 0;
+    }
+
+    public List<DownloadInfo> getAllDownloadInfo() {
+        List<DownloadInfo> result = new ArrayList<>();
+        Cursor cursor = null;
+        try {
+            SQLiteDatabase db = databaseManager.openConnection();
+            cursor = db.query(TABLE, null, null, null, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                DownloadInfo item;
+                do {
+                    item = new DownloadInfo();
+                    item.setUrlRemote(cursor.getString(cursor.getColumnIndex(COLUMN_URL_REMOTE)));
+                    item.setUrlLocal(cursor.getString(cursor.getColumnIndex(COLUMN_URL_LOCAL)));
+                    result.add(item);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Logger.warn("Cannot get all DownloadInfo", e);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            databaseManager.closeConnection();
+        }
+        return result;
     }
 
 

@@ -13,7 +13,7 @@ public class LogcatLogger extends BaseLogger {
     }
 
     @Override
-    public void warn(String message) {
-        Log.w(getLogTag(), getOptimizedMessage(message));
+    public void warn(String message, Exception e) {
+        Log.w(getLogTag(), getOptimizedWarning(message, e));
     }
 }

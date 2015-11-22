@@ -8,6 +8,7 @@ public abstract class BaseLogger implements Loggable {
 
     /**
      * This method to get current log tag to find the current class run this log method
+     *
      * @return Log tag of current java class
      */
     protected String getLogTag() {
@@ -17,6 +18,7 @@ public abstract class BaseLogger implements Loggable {
 
     /**
      * Get the method that invoke log method
+     *
      * @return Caller method name
      */
     protected String getMethodName() {
@@ -25,6 +27,7 @@ public abstract class BaseLogger implements Loggable {
 
     /**
      * Get process id that app currently running
+     *
      * @return Process id
      */
     protected int getProcessId() {
@@ -33,6 +36,7 @@ public abstract class BaseLogger implements Loggable {
 
     /**
      * Get thread id that app currently running
+     *
      * @return Thread id
      */
     protected long getThreadId() {
@@ -42,11 +46,24 @@ public abstract class BaseLogger implements Loggable {
     /**
      * Get message has been optimized by adding process id, thread id, caller method name follow pattern:
      * Process[?]Thread[?][Method name] Message
+     *
      * @param message The original message
      * @return The optimized message
      */
     protected String getOptimizedMessage(String message) {
         return "Process[" + getProcessId() + "]Thread[" + getThreadId() + "][" + getMethodName() + "] " + message;
+    }
+
+    /**
+     * Get warning message has been optimized by adding process id, thread id, caller method name follow pattern:
+     * Process[?]Thread[?][Method name] Message | Exception ?
+     *
+     * @param message The original message
+     * @param e       Detailed exception
+     * @return The optimized message
+     */
+    protected String getOptimizedWarning(String message, Exception e) {
+        return getOptimizedMessage(message) + " | " + "Exception: " + e;
     }
 
 }

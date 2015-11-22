@@ -26,11 +26,22 @@ public class DownloadInfo implements Serializable {
      */
     private DownloadStatus status;
 
+    public DownloadInfo() {
+
+    }
+
     public DownloadInfo(@NonNull String urlRemote, @NonNull String urlLocal, int indexStart, int indexEnd) {
+        this(urlRemote, urlLocal, new ByteRange(indexStart, indexEnd));
+    }
+
+    public DownloadInfo(@NonNull String urlRemote, @NonNull String urlLocal) {
+        this(urlRemote, urlLocal, null);
+    }
+
+    public DownloadInfo(@NonNull String urlRemote, @NonNull String urlLocal, ByteRange byteRange) {
         this.urlRemote = urlRemote;
         this.urlLocal = urlLocal;
-        this.byteRange = new ByteRange(indexStart, indexEnd);
-
+        this.byteRange = byteRange;
         // Default this download info is not in queue
         status = DownloadStatus.NOT_IN_QUEUE;
     }
@@ -45,5 +56,21 @@ public class DownloadInfo implements Serializable {
 
     public DownloadStatus getStatus() {
         return status;
+    }
+
+    public void setUrlRemote(String urlRemote) {
+        this.urlRemote = urlRemote;
+    }
+
+    public void setUrlLocal(String urlLocal) {
+        this.urlLocal = urlLocal;
+    }
+
+    public void setByteRange(ByteRange byteRange) {
+        this.byteRange = byteRange;
+    }
+
+    public void setStatus(DownloadStatus status) {
+        this.status = status;
     }
 }

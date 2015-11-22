@@ -17,9 +17,9 @@ public class Logger {
         logger.debug(message);
     }
 
-    public static void warn(String message) {
+    public static void warn(String message, Exception e) {
         // Delegate to real logger helper object
-        logger.warn(message);
+        logger.warn(message, e);
     }
 
 }
