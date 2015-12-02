@@ -38,6 +38,11 @@ public class DownloadDAO extends BaseDAO {
         databaseManager.execSQL(sql);
     }
 
+    @Override
+    public void upgradeTable(int version) {
+
+    }
+
     /**
      * Insert download record by list
      *

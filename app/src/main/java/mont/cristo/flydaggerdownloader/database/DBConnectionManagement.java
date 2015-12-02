@@ -14,10 +14,10 @@ public class DBConnectionManagement {
      */
     private SQLiteDatabase db;
 
-    private DatabaseManager databaseManager;
+    private DBAccessible dbAccessor;
 
-    public DBConnectionManagement(DatabaseManager databaseManager) {
-        this.databaseManager = databaseManager;
+    public DBConnectionManagement(DBAccessible dbAccessor) {
+        this.dbAccessor = dbAccessor;
     }
 
     /**
@@ -26,7 +26,7 @@ public class DBConnectionManagement {
     public synchronized SQLiteDatabase open() {
         referenceCount++;
         if (db == null) {
-            db = databaseManager.getWritableDatabase();
+            db = dbAccessor.open();
         }
         return db;
     }

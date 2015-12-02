@@ -15,4 +15,9 @@ public interface DAO {
      */
     void deleteTable();
 
+    /**
+     * Upgrade this table
+     */
+    void upgradeTable(int version);
+
 }

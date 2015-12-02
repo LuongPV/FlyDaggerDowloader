@@ -42,8 +42,22 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
+        // Object to communicate with physical database file
+        DBAccessible dbAccessor = new DBAccessible() {
+            @Override
+            public SQLiteDatabase open() {
+                return DatabaseManager.this.getWritableDatabase();
+            }
+
+            @Override
+            public void close() {
+
+            }
+        };
+
         // Init connection management
-        dbConnection = new DBConnectionManagement(this);
+        dbConnection = new DBConnectionManagement(dbAccessor);
         initDatabase();
     }
 
@@ -80,11 +94,22 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        deleteAllTable();
-        Logger.debug("Done delete or modify table structure");
+        Logger.debug("Begin update needed table to retain old data");
+        upgradeAllTable();
+    }
 
-        // Re-create db
-        onCreate(db);
+    private void upgradeAllTable() {
+        SQLiteDatabase db = null;
+        try {
+            db = dbConnection.open();
+            for (DAO dao : DAOCreator.getAllDAO(this)) {
+                dao.upgradeTable(DATABASE_VERSION);
+            }
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
     }
 
     private void deleteAllTable() {
