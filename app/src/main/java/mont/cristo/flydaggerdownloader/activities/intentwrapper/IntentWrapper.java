@@ -1,5 +1,6 @@
 package mont.cristo.flydaggerdownloader.activities.intentwrapper;
 
+import android.content.Context;
 import android.content.Intent;
 
 /**
@@ -12,8 +13,16 @@ public abstract class IntentWrapper {
      */
     protected Intent intent;
 
-    protected IntentWrapper() {
+    /**
+     * Context to perform transport
+     */
+    protected Context context;
 
+    /**
+     * Constructor to create new wrapper to perform transport
+     */
+    protected IntentWrapper(Context context) {
+        this.context = context;
     }
 
     /**

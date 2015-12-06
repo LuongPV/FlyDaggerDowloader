@@ -1,13 +1,22 @@
 package mont.cristo.flydaggerdownloader.activities.intentwrapper;
 
+import android.content.Context;
+import android.content.Intent;
+
 public abstract class ActionIntentWrapper extends IntentWrapper {
-    protected String action;
 
     /**
-     * Constructor to create new wrapper base on an action (need for source class)
+     * Constructor to create new wrapper to get data (need for dest class)
      */
-    protected ActionIntentWrapper(String action) {
-        this.action = action;
+    public ActionIntentWrapper(Intent intent) {
+        super(intent);
+    }
+
+    /**
+     * Constructor to create new wrapper to perform transport
+     */
+    protected ActionIntentWrapper(Context context) {
+        super(context);
     }
 
     /**

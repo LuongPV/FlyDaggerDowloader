@@ -4,14 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 
 public abstract class ComponentNameIntentWrapper extends IntentWrapper {
-    protected Context context;
 
+    /**
+     * Constructor to create new wrapper to get data (need for dest class)
+     */
     public ComponentNameIntentWrapper(Intent intent) {
         super(intent);
     }
 
-    public ComponentNameIntentWrapper(Context context) {
-        this.context = context;
+    /**
+     * Constructor to create new wrapper to perform transport
+     */
+    protected ComponentNameIntentWrapper(Context context) {
+        super(context);
     }
 
     /**
