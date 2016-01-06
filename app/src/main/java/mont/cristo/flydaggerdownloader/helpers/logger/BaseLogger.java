@@ -51,7 +51,7 @@ public abstract class BaseLogger implements Loggable {
      * @return The optimized message
      */
     protected String getOptimizedMessage(String message) {
-        return "Process[" + getProcessId() + "]Thread[" + getThreadId() + "][" + getMethodName() + "] " + message;
+        return "Process-" + getProcessId() + " >>> Thread-" + getThreadId() + " >>> " + getMethodName() + " >>> " + message;
     }
 
     /**
@@ -63,7 +63,7 @@ public abstract class BaseLogger implements Loggable {
      * @return The optimized message
      */
     protected String getOptimizedWarning(String message, Exception e) {
-        return getOptimizedMessage(message) + " | " + "Exception: " + e;
+        return getOptimizedMessage(message) + " >>> " + "Exception: " + e;
     }
 
 }
