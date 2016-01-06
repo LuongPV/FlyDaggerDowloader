@@ -14,7 +14,6 @@ import mont.cristo.flydaggerdownloader.helpers.logger.file.fileconnection.FileCo
  * This class is used to write log to logcat
  */
 public class FileLogger extends BaseLogger {
-    private static final String TAG_LOG = FileLogger.class.getSimpleName();
     private static final boolean IS_AUTO_FLUSH = false;
     private FileConnection fileConnection;
     private static final String FORMAT_TIME = "yyyyMMdd:HHmmss:SSS";
@@ -33,7 +32,7 @@ public class FileLogger extends BaseLogger {
             // Every file has written, must refresh time out
             this.fileConnection.refreshTime();
         } else {
-            Log.e(TAG_LOG, "[debug] Cannot open file connection");
+            Log.e(getLogTag(), "[debug] Cannot open file connection");
         }
     }
 
@@ -45,7 +44,7 @@ public class FileLogger extends BaseLogger {
             // Every file has written, must refresh time out
             this.fileConnection.refreshTime();
         } else {
-            Log.e(TAG_LOG, "[warn] Cannot open file connection");
+            Log.e(getLogTag(), "[warn] Cannot open file connection");
         }
     }
 
