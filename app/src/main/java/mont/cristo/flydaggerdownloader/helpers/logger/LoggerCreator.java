@@ -1,12 +1,16 @@
 package mont.cristo.flydaggerdownloader.helpers.logger;
 
+import mont.cristo.flydaggerdownloader.helpers.logger.file.FileLogger;
+import mont.cristo.flydaggerdownloader.helpers.logger.logcat.LogcatLogger;
+
 public class LoggerCreator {
 
     /**
      * All type of loggers should be defined here
      */
     public enum LoggerType {
-        LOGCAT
+        LOGCAT,
+        FILE
     }
 
     /**
@@ -19,6 +23,9 @@ public class LoggerCreator {
         switch (loggerType) {
             case LOGCAT:
                 logger = new LogcatLogger();
+                break;
+            case FILE:
+                logger = new FileLogger();
                 break;
         }
         return logger;
