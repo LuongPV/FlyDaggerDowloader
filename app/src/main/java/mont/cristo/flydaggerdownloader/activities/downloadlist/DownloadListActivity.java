@@ -3,7 +3,7 @@ package mont.cristo.flydaggerdownloader.activities.downloadlist;
 import mont.cristo.flydaggerdownloader.R;
 import mont.cristo.flydaggerdownloader.activities.BaseActivity;
 import mont.cristo.flydaggerdownloader.activities.downloaddetail.DownloadDetailIntentWrapper;
-import mont.cristo.flydaggerdownloader.models.DownloadInfo;
+import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
 
 public class DownloadListActivity extends BaseActivity {
 

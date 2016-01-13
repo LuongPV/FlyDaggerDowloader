@@ -1,4 +1,4 @@
-package mont.cristo.flydaggerdownloader.models;
+package mont.cristo.flydaggerdownloader.helpers.network;
 
 public enum DownloadStatus {
 

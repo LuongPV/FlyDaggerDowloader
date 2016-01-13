@@ -1,4 +1,4 @@
-package mont.cristo.flydaggerdownloader.models;
+package mont.cristo.flydaggerdownloader.helpers.file;
 
 /**
  * Contain all file formats that application can identify

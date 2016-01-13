@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import mont.cristo.flydaggerdownloader.activities.intentwrapper.ComponentNameIntentWrapper;
-import mont.cristo.flydaggerdownloader.models.DownloadInfo;
+import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
 
 public class DownloadDetailIntentWrapper extends ComponentNameIntentWrapper {
     private static final String EXTRA_DOWNLOAD_INFO = "download_info";

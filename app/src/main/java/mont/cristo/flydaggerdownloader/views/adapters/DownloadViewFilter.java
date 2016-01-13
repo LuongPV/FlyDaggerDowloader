@@ -5,8 +5,8 @@ import com.google.common.io.Files;
 import java.io.File;
 
 import mont.cristo.flydaggerdownloader.R;
-import mont.cristo.flydaggerdownloader.models.DownloadInfo;
-import mont.cristo.flydaggerdownloader.models.FileFormat;
+import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
+import mont.cristo.flydaggerdownloader.helpers.file.FileFormat;
 
 public class DownloadViewFilter {
 

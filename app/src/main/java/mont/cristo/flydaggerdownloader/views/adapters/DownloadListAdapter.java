@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import mont.cristo.flydaggerdownloader.R;
-import mont.cristo.flydaggerdownloader.models.DownloadInfo;
+import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
 
 public class DownloadListAdapter extends BaseAdapter<DownloadInfo> {
 
