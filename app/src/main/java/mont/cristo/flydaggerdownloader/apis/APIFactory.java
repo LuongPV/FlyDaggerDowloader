@@ -1,6 +1,5 @@
-package mont.cristo.flydaggerdownloader.apis.factory;
+package mont.cristo.flydaggerdownloader.apis;
 
-import mont.cristo.flydaggerdownloader.apis.GetDownloadUrlAPI;
 import mont.cristo.flydaggerdownloader.apis.base.BaseAPI;
 import mont.cristo.flydaggerdownloader.apis.base.RequestListener;
 

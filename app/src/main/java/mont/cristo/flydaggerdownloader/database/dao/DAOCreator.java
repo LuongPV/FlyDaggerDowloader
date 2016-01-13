@@ -1,8 +1,9 @@
-package mont.cristo.flydaggerdownloader.database.dao.base;
+package mont.cristo.flydaggerdownloader.database.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import mont.cristo.flydaggerdownloader.database.dao.base.DAO;
 import mont.cristo.flydaggerdownloader.database.dbcore.DatabaseManager;
 import mont.cristo.flydaggerdownloader.database.dao.DownloadDAO;
 
