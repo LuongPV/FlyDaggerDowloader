@@ -1,6 +1,6 @@
 package mont.cristo.flydaggerdownloader.application;
 
-import mont.cristo.flydaggerdownloader.database.DatabaseManager;
+import mont.cristo.flydaggerdownloader.database.dbcore.DatabaseManager;
 
 public class Application extends android.app.Application {
     private static Application instance;

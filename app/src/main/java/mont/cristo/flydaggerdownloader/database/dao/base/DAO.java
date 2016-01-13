@@ -1,4 +1,4 @@
-package mont.cristo.flydaggerdownloader.database.dao;
+package mont.cristo.flydaggerdownloader.database.dao.base;
 
 /**
  * This class define all operation that a DAO must have to use database

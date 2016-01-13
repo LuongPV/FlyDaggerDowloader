@@ -1,11 +1,11 @@
-package mont.cristo.flydaggerdownloader.database;
+package mont.cristo.flydaggerdownloader.database.dbcore;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import mont.cristo.flydaggerdownloader.database.dao.DAO;
-import mont.cristo.flydaggerdownloader.database.dao.DAOCreator;
+import mont.cristo.flydaggerdownloader.database.dao.base.DAO;
+import mont.cristo.flydaggerdownloader.database.dao.base.DAOCreator;
 import mont.cristo.flydaggerdownloader.helpers.logger.Logger;
 
 public class DatabaseManager extends SQLiteOpenHelper {

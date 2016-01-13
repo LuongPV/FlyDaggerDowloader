@@ -1,4 +1,4 @@
-package mont.cristo.flydaggerdownloader.database;
+package mont.cristo.flydaggerdownloader.database.dbcore;
 
 import android.database.sqlite.SQLiteDatabase;
 

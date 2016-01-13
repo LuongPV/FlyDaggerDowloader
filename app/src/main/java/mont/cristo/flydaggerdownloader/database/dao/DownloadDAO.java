@@ -7,7 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import mont.cristo.flydaggerdownloader.database.DatabaseManager;
+import mont.cristo.flydaggerdownloader.database.dbcore.DatabaseManager;
+import mont.cristo.flydaggerdownloader.database.dao.base.BaseDAO;
 import mont.cristo.flydaggerdownloader.helpers.logger.Logger;
 import mont.cristo.flydaggerdownloader.models.DownloadInfo;
 

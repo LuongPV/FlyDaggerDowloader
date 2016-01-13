@@ -1,6 +1,6 @@
-package mont.cristo.flydaggerdownloader.database.dao;
+package mont.cristo.flydaggerdownloader.database.dao.base;
 
-import mont.cristo.flydaggerdownloader.database.DatabaseManager;
+import mont.cristo.flydaggerdownloader.database.dbcore.DatabaseManager;
 
 public abstract class BaseDAO implements DAO {
 
