@@ -1,6 +1,8 @@
-package mont.cristo.flydaggerdownloader.helpers.logger;
+package mont.cristo.flydaggerdownloader.helpers.logger.base;
 
 import android.support.annotation.NonNull;
+
+import mont.cristo.flydaggerdownloader.helpers.logger.LoggerCreator;
 
 public class Logger {
 

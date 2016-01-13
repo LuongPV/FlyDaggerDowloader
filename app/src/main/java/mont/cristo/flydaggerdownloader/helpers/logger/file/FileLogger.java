@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import mont.cristo.flydaggerdownloader.helpers.logger.BaseLogger;
+import mont.cristo.flydaggerdownloader.helpers.logger.base.BaseLogger;
 import mont.cristo.flydaggerdownloader.helpers.logger.file.fileconnection.FileConnection;
 
 /**

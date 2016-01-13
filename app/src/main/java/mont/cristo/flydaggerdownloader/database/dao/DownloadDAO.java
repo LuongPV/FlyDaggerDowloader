@@ -9,7 +9,7 @@ import java.util.List;
 
 import mont.cristo.flydaggerdownloader.database.dbcore.DatabaseManager;
 import mont.cristo.flydaggerdownloader.database.dao.base.BaseDAO;
-import mont.cristo.flydaggerdownloader.helpers.logger.Logger;
+import mont.cristo.flydaggerdownloader.helpers.logger.base.Logger;
 import mont.cristo.flydaggerdownloader.models.DownloadInfo;
 
 public class DownloadDAO extends BaseDAO {

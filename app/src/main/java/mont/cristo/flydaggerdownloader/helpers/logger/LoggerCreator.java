@@ -1,5 +1,6 @@
 package mont.cristo.flydaggerdownloader.helpers.logger;
 
+import mont.cristo.flydaggerdownloader.helpers.logger.base.Loggable;
 import mont.cristo.flydaggerdownloader.helpers.logger.file.FileLogger;
 import mont.cristo.flydaggerdownloader.helpers.logger.logcat.LogcatLogger;
 

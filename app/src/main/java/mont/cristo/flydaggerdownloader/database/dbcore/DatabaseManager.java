@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import mont.cristo.flydaggerdownloader.database.dao.base.DAO;
 import mont.cristo.flydaggerdownloader.database.dao.base.DAOCreator;
-import mont.cristo.flydaggerdownloader.helpers.logger.Logger;
+import mont.cristo.flydaggerdownloader.helpers.logger.base.Logger;
 
 public class DatabaseManager extends SQLiteOpenHelper {
 

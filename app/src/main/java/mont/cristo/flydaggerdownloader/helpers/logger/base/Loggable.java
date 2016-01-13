@@ -1,4 +1,4 @@
-package mont.cristo.flydaggerdownloader.helpers.logger;
+package mont.cristo.flydaggerdownloader.helpers.logger.base;
 
 /**
  * Define methods needed for any concrete log object

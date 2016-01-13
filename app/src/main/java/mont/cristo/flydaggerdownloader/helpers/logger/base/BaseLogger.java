@@ -1,4 +1,4 @@
-package mont.cristo.flydaggerdownloader.helpers.logger;
+package mont.cristo.flydaggerdownloader.helpers.logger.base;
 
 public abstract class BaseLogger implements Loggable {
     private static final int INDEX_STACK_TRACE_DEFAULT = 3;
