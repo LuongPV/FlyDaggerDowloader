@@ -1,7 +1,7 @@
 package mont.cristo.flydaggerdownloader.activities.downloaddetail;
 
 import mont.cristo.flydaggerdownloader.R;
-import mont.cristo.flydaggerdownloader.activities.BaseActivity;
+import mont.cristo.flydaggerdownloader.activities.base.BaseActivity;
 import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
 
 public class DownloadDetailActivity extends BaseActivity {

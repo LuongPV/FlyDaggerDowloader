@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import mont.cristo.flydaggerdownloader.R;
-import mont.cristo.flydaggerdownloader.activities.BaseActivity;
+import mont.cristo.flydaggerdownloader.activities.base.BaseActivity;
 import mont.cristo.flydaggerdownloader.activities.downloadlist.DownloadListIntentWrapper;
 
 public class MenuActivity extends BaseActivity {

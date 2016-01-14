@@ -4,6 +4,7 @@ package mont.cristo.flydaggerdownloader.activities;
 import android.os.Handler;
 
 import mont.cristo.flydaggerdownloader.R;
+import mont.cristo.flydaggerdownloader.activities.base.BaseActivity;
 import mont.cristo.flydaggerdownloader.activities.menu.MenuIntentWrapper;
 
 public class SplashActivity extends BaseActivity {

@@ -1,4 +1,4 @@
-package mont.cristo.flydaggerdownloader.activities;
+package mont.cristo.flydaggerdownloader.activities.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
