@@ -8,6 +8,8 @@
     <string name="error_request_timeout">Request timeout</string>
     <string name="error_server_error">Server error</string>
 
+    <string name="message_invalid_username">Invalid username</string>
+
     <string name="text">Text</string>
 
 </resources>
