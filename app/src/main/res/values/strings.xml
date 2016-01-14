@@ -4,4 +4,10 @@
     <!-- Splash screen -->
     <string name="message_splash_description">Fly Dagger Downloader</string>
 
+    <string name="error_connect_failed">Connect failed</string>
+    <string name="error_request_timeout">Request timeout</string>
+    <string name="error_server_error">Server error</string>
+
+    <string name="text">Text</string>
+
 </resources>
