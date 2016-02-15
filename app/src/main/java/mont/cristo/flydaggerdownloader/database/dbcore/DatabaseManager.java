@@ -95,15 +95,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Logger.debug("Begin update needed table to retain old data");
-        upgradeAllTable();
+        upgradeAllTable(oldVersion);
     }
 
-    private void upgradeAllTable() {
+    private void upgradeAllTable(int oldVersion) {
         SQLiteDatabase db = null;
         try {
             db = dbConnection.open();
             for (DAO dao : DAOCreator.getAllDAO(this)) {
-                dao.upgradeTable(DATABASE_VERSION);
+                dao.upgradeTable(oldVersion);
             }
         } finally {
             if (db != null) {

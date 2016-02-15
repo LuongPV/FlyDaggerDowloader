@@ -18,10 +18,35 @@ public class DownloadDAO extends BaseDAO {
     private static final String COLUMN_URL_REMOTE = "url_remote";
     private static final String COLUMN_URL_LOCAL = "url_local";
     private static final String COLUMN_STATUS = "status";
+    // Available since version 2
+    private static final String COLUMN_LOCATION = "location";
+    private static final String COLUMN_TYPE = "type";
+    // Available since version 3
+    private static final String COLUMN_PROGRESS = "progress";
 
     public DownloadDAO(DatabaseManager databaseManager) {
         super(databaseManager);
     }
+
+    @Override
+    protected DAOUpgradeInfo[] getUpgradeInfos() {
+        return new DAOUpgradeInfo[] {
+                new DAOUpgradeInfo(1, new DAOUpgradeInfo.UpgradeAction() {
+                    @Override
+                    public void upgrade() {
+                        databaseManager.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + COLUMN_LOCATION + " TEXT;");
+                        databaseManager.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + COLUMN_TYPE + " INTEGER;");
+                    }
+                }),
+                new DAOUpgradeInfo(2, new DAOUpgradeInfo.UpgradeAction() {
+                    @Override
+                    public void upgrade() {
+                        databaseManager.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + COLUMN_PROGRESS + " INTEGER;");
+                    }
+                })
+        };
+    }
+
 
     @Override
     public void initTable() {
@@ -39,10 +64,7 @@ public class DownloadDAO extends BaseDAO {
         databaseManager.execSQL(sql);
     }
 
-    @Override
-    public void upgradeTable(int version) {
 
-    }
 
     /**
      * Insert download record by list

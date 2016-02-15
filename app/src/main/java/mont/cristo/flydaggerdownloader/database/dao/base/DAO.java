@@ -18,6 +18,6 @@ public interface DAO {
     /**
      * Upgrade this table
      */
-    void upgradeTable(int version);
+    void upgradeTable(int oldVersion);
 
 }
