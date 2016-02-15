@@ -1,6 +1,6 @@
 package mont.cristo.flydaggerdownloader.activities.base;
 
-public abstract class BaseAPIActivity extends BaseActivity {
+public abstract class BaseAPIActivity extends BaseSingleClickActivity {
 
     private void showConnectFailedDialog() {
 

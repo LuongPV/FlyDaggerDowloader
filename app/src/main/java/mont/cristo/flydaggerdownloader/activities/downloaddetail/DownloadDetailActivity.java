@@ -1,10 +1,12 @@
 package mont.cristo.flydaggerdownloader.activities.downloaddetail;
 
+import android.view.View;
+
 import mont.cristo.flydaggerdownloader.R;
-import mont.cristo.flydaggerdownloader.activities.base.BaseActivity;
+import mont.cristo.flydaggerdownloader.activities.base.BaseSingleClickActivity;
 import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
 
-public class DownloadDetailActivity extends BaseActivity {
+public class DownloadDetailActivity extends BaseSingleClickActivity {
 
     @Override
     public int getLayoutResId() {
@@ -15,5 +17,10 @@ public class DownloadDetailActivity extends BaseActivity {
     public void initViews() {
         // Get extra data
         DownloadInfo downloadInfo = new DownloadDetailIntentWrapper(getIntent()).getDownloadInfo();
+    }
+
+    @Override
+    public View[] getClickableViews() {
+        return new View[]{};
     }
 }

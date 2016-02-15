@@ -2,6 +2,7 @@ package mont.cristo.flydaggerdownloader.activities.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 
 import mont.cristo.flydaggerdownloader.activities.intentwrapper.IntentWrapper;
 
@@ -31,5 +32,11 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void startActivity(IntentWrapper intentWrapper) {
         intentWrapper.transport();
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
     }
 }
