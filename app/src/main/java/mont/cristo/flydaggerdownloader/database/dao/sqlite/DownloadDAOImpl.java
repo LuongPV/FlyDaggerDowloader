@@ -7,12 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import mont.cristo.flydaggerdownloader.database.dao.Download;
+import mont.cristo.flydaggerdownloader.database.dao.DownloadDAO;
 import mont.cristo.flydaggerdownloader.database.manager.base.Database;
 import mont.cristo.flydaggerdownloader.helpers.logger.base.Logger;
 import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
 
-public class DownloadDAO extends BaseDAO implements Download {
+public class DownloadDAOImpl extends BaseDAO implements DownloadDAO {
     private static final String TABLE = "download";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_URL_REMOTE = "url_remote";
@@ -24,7 +24,7 @@ public class DownloadDAO extends BaseDAO implements Download {
     // Available since version 3
     private static final String COLUMN_PROGRESS = "progress";
 
-    public DownloadDAO(Database database) {
+    public DownloadDAOImpl(Database database) {
         super(database);
     }
 

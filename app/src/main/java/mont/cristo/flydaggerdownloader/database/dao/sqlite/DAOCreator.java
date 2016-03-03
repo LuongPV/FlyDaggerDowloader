@@ -12,7 +12,7 @@ public class DAOCreator {
         DAO dao = null;
         switch (daoType) {
             case DOWNLOAD:
-                dao = new DownloadDAO(database);
+                dao = new DownloadDAOImpl(database);
                 break;
         }
         return dao;

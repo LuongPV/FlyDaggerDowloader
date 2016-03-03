@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mont.cristo.flydaggerdownloader.database.dao.DAOType;
-import mont.cristo.flydaggerdownloader.database.dao.realm.downloadinfo.DownloadDAO;
+import mont.cristo.flydaggerdownloader.database.dao.realm.downloadinfo.DownloadDAOImpl;
 import mont.cristo.flydaggerdownloader.database.manager.base.Database;
 
 public class DAOCreator {
@@ -13,7 +13,7 @@ public class DAOCreator {
         DAO dao = null;
         switch (daoType) {
             case DOWNLOAD:
-                dao = new DownloadDAO(database);
+                dao = new DownloadDAOImpl(database);
                 break;
         }
         return dao;

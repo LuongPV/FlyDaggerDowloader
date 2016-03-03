@@ -4,7 +4,7 @@ import java.util.List;
 
 import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
 
-public interface Download {
+public interface DownloadDAO {
 
     /**
      * Insert download record by list
