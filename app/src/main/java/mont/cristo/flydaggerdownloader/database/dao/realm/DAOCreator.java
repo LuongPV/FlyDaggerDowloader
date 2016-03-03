@@ -3,16 +3,11 @@ package mont.cristo.flydaggerdownloader.database.dao.realm;
 import java.util.ArrayList;
 import java.util.List;
 
+import mont.cristo.flydaggerdownloader.database.dao.DAOType;
 import mont.cristo.flydaggerdownloader.database.dao.realm.downloadinfo.DownloadDAO;
 import mont.cristo.flydaggerdownloader.database.manager.base.Database;
 
 public class DAOCreator {
-
-    public enum DAOType {
-
-        DOWNLOAD
-
-    }
 
     public static DAO getDAO(DAOType daoType, Database database) {
         DAO dao = null;

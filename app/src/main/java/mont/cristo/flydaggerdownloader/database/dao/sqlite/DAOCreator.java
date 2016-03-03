@@ -3,16 +3,10 @@ package mont.cristo.flydaggerdownloader.database.dao.sqlite;
 import java.util.ArrayList;
 import java.util.List;
 
+import mont.cristo.flydaggerdownloader.database.dao.DAOType;
 import mont.cristo.flydaggerdownloader.database.manager.base.Database;
-import mont.cristo.flydaggerdownloader.database.manager.sqlite.DBManager;
 
 public class DAOCreator {
-
-    public enum DAOType {
-
-        DOWNLOAD
-
-    }
 
     public static DAO getDAO(DAOType daoType, Database database) {
         DAO dao = null;
