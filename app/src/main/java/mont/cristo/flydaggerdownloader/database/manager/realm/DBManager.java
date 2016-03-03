@@ -15,8 +15,6 @@ public class DBManager implements Database {
     // Database Version
     private static final long DATABASE_VERSION = 1;
 
-    private Realm realm;
-
     private Context context;
 
     public DBManager(Context context) {
@@ -30,7 +28,7 @@ public class DBManager implements Database {
     }
 
     public Realm getRealm() {
-        realm = Realm.getInstance(new RealmConfiguration.Builder(context)
+        return Realm.getInstance(new RealmConfiguration.Builder(context)
                 .migration(new RealmMigration() {
 
                     @Override
@@ -40,6 +38,5 @@ public class DBManager implements Database {
                 })
                 .schemaVersion(DATABASE_VERSION)
                 .build());
-        return realm;
     }
 }
