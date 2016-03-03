@@ -1,14 +1,15 @@
-package mont.cristo.flydaggerdownloader.database.dbcore;
+package mont.cristo.flydaggerdownloader.database.manager.sqlite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import mont.cristo.flydaggerdownloader.database.dao.base.DAO;
-import mont.cristo.flydaggerdownloader.database.dao.DAOCreator;
+import mont.cristo.flydaggerdownloader.database.dao.sqlite.DAO;
+import mont.cristo.flydaggerdownloader.database.dao.sqlite.DAOCreator;
+import mont.cristo.flydaggerdownloader.database.manager.base.Database;
 import mont.cristo.flydaggerdownloader.helpers.logger.base.Logger;
 
-public class DatabaseManager extends SQLiteOpenHelper {
+public class DBManager extends SQLiteOpenHelper implements Database {
 
     // Database Version
     private static final int DATABASE_VERSION = 1;
@@ -19,7 +20,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     /**
      * Singleton to hold the unique instance
      */
-    private static DatabaseManager instance;
+    private static DBManager instance;
 
     /**
      * Database connection management object
@@ -29,25 +30,25 @@ public class DatabaseManager extends SQLiteOpenHelper {
     /**
      * Use single instance for this class
      */
-    public static DatabaseManager initialize(Context context) {
+    public static DBManager initialize(Context context) {
         if (instance == null) {
-            instance = new DatabaseManager(context);
+            instance = new DBManager(context);
         }
         return instance;
     }
 
-    public static DatabaseManager getInstance() {
+    public static DBManager getInstance() {
         return instance;
     }
 
-    public DatabaseManager(Context context) {
+    public DBManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
         // Object to communicate with physical database file
         DBAccessible dbAccessor = new DBAccessible() {
             @Override
             public SQLiteDatabase open() {
-                return DatabaseManager.this.getWritableDatabase();
+                return DBManager.this.getWritableDatabase();
             }
 
             @Override
@@ -98,7 +99,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         upgradeAllTable(oldVersion);
     }
 
-    private void upgradeAllTable(int oldVersion) {
+    public void upgradeAllTable(long oldVersion) {
         SQLiteDatabase db = null;
         try {
             db = dbConnection.open();

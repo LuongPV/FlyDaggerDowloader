@@ -1,24 +1,23 @@
-package mont.cristo.flydaggerdownloader.database.dao.base;
+package mont.cristo.flydaggerdownloader.database.dao.realm;
 
-import mont.cristo.flydaggerdownloader.database.dao.DAOUpgradeInfo;
-import mont.cristo.flydaggerdownloader.database.dbcore.DatabaseManager;
+import io.realm.Realm;
 
 public abstract class BaseDAO implements DAO {
 
-    protected DatabaseManager databaseManager;
+    protected Realm realm;
 
     private DAOUpgradeInfo[] daoUpgradeInfos;
 
-    public BaseDAO(DatabaseManager databaseManager) {
-        this.databaseManager = databaseManager;
+    public BaseDAO(Realm realm) {
+        this.realm = realm;
         daoUpgradeInfos = getUpgradeInfos();
     }
 
     @Override
-    public void upgradeTable(int oldVersion) {
+    public void upgradeTable(long oldVersion) {
         for (DAOUpgradeInfo daoUpgradeInfo : daoUpgradeInfos) {
             if (daoUpgradeInfo.getOldVersion() >= oldVersion) {
-                daoUpgradeInfo.upgrade();
+                daoUpgradeInfo.upgrade(realm);
             }
         }
     }

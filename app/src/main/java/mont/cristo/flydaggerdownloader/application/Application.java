@@ -1,9 +1,11 @@
 package mont.cristo.flydaggerdownloader.application;
 
-import mont.cristo.flydaggerdownloader.database.dbcore.DatabaseManager;
+import mont.cristo.flydaggerdownloader.database.manager.base.Database;
+import mont.cristo.flydaggerdownloader.database.manager.base.DBCreator;
 
 public class Application extends android.app.Application {
     private static Application instance;
+    private Database database;
 
     public static Application getInstance() {
         return instance;
@@ -20,6 +22,10 @@ public class Application extends android.app.Application {
      * Initialize all required components
      */
     private void initComponents() {
-        DatabaseManager.initialize(this);
+        database = DBCreator.getDatabase(DBCreator.DatabaseType.REALM, this);
+    }
+
+    public Database getDatabase() {
+        return database;
     }
 }

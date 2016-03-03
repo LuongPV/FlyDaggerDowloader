@@ -73,4 +73,8 @@ public class DownloadInfo implements Serializable {
     public void setStatus(DownloadStatus status) {
         this.status = status;
     }
+
+    public ByteRange getByteRange() {
+        return byteRange;
+    }
 }

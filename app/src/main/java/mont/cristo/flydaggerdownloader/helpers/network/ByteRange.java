@@ -47,4 +47,12 @@ public class ByteRange {
     public String toString() {
         return "ByteRange{" + "indexStart=" + indexStart + ", indexEnd=" + indexEnd + '}';
     }
+
+    public int getIndexStart() {
+        return indexStart;
+    }
+
+    public int getIndexEnd() {
+        return indexEnd;
+    }
 }

@@ -1,4 +1,4 @@
-package mont.cristo.flydaggerdownloader.database.dao.base;
+package mont.cristo.flydaggerdownloader.database.dao.sqlite;
 
 /**
  * This class define all operation that a DAO must have to use database
@@ -18,6 +18,6 @@ public interface DAO {
     /**
      * Upgrade this table
      */
-    void upgradeTable(int oldVersion);
+    void upgradeTable(long oldVersion);
 
 }

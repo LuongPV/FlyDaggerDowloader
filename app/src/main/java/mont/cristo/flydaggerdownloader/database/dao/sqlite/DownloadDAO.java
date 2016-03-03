@@ -1,4 +1,4 @@
-package mont.cristo.flydaggerdownloader.database.dao;
+package mont.cristo.flydaggerdownloader.database.dao.sqlite;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -7,12 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import mont.cristo.flydaggerdownloader.database.dbcore.DatabaseManager;
-import mont.cristo.flydaggerdownloader.database.dao.base.BaseDAO;
+import mont.cristo.flydaggerdownloader.database.dao.Download;
+import mont.cristo.flydaggerdownloader.database.manager.sqlite.DBManager;
 import mont.cristo.flydaggerdownloader.helpers.logger.base.Logger;
 import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
 
-public class DownloadDAO extends BaseDAO {
+public class DownloadDAO extends BaseDAO implements Download {
     private static final String TABLE = "download";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_URL_REMOTE = "url_remote";
@@ -24,8 +24,8 @@ public class DownloadDAO extends BaseDAO {
     // Available since version 3
     private static final String COLUMN_PROGRESS = "progress";
 
-    public DownloadDAO(DatabaseManager databaseManager) {
-        super(databaseManager);
+    public DownloadDAO(DBManager dbManager) {
+        super(dbManager);
     }
 
     @Override
@@ -34,14 +34,14 @@ public class DownloadDAO extends BaseDAO {
                 new DAOUpgradeInfo(1, new DAOUpgradeInfo.UpgradeAction() {
                     @Override
                     public void upgrade() {
-                        databaseManager.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + COLUMN_LOCATION + " TEXT;");
-                        databaseManager.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + COLUMN_TYPE + " INTEGER;");
+                        dbManager.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + COLUMN_LOCATION + " TEXT;");
+                        dbManager.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + COLUMN_TYPE + " INTEGER;");
                     }
                 }),
                 new DAOUpgradeInfo(2, new DAOUpgradeInfo.UpgradeAction() {
                     @Override
                     public void upgrade() {
-                        databaseManager.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + COLUMN_PROGRESS + " INTEGER;");
+                        dbManager.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + COLUMN_PROGRESS + " INTEGER;");
                     }
                 })
         };
@@ -55,13 +55,13 @@ public class DownloadDAO extends BaseDAO {
                 + COLUMN_URL_REMOTE + " TEXT, "
                 + COLUMN_URL_LOCAL + " TEXT, "
                 + COLUMN_STATUS + " INTEGER)";
-        databaseManager.execSQL(sql);
+        dbManager.execSQL(sql);
     }
 
     @Override
     public void deleteTable() {
         String sql = "DROP TABLE IF EXISTS " + TABLE;
-        databaseManager.execSQL(sql);
+        dbManager.execSQL(sql);
     }
 
 
@@ -93,7 +93,7 @@ public class DownloadDAO extends BaseDAO {
     public boolean insertDownloadInfo(DownloadInfo downloadInfo) {
         long result = -1;
         try {
-            SQLiteDatabase db = databaseManager.openConnection();
+            SQLiteDatabase db = dbManager.openConnection();
             ContentValues values = new ContentValues();
             values.put(COLUMN_URL_REMOTE, downloadInfo.getUrlRemote());
             values.put(COLUMN_URL_LOCAL, downloadInfo.getUrlLocal());
@@ -102,7 +102,7 @@ public class DownloadDAO extends BaseDAO {
         } catch (Exception e) {
             Logger.warn("Cannot insert DownloadInfo: " + downloadInfo, e);
         } finally {
-            databaseManager.closeConnection();
+            dbManager.closeConnection();
         }
         return result > 0;
     }
@@ -111,7 +111,7 @@ public class DownloadDAO extends BaseDAO {
         List<DownloadInfo> result = new ArrayList<>();
         Cursor cursor = null;
         try {
-            SQLiteDatabase db = databaseManager.openConnection();
+            SQLiteDatabase db = dbManager.openConnection();
             cursor = db.query(TABLE, null, null, null, null, null, null);
             if (cursor != null && cursor.moveToFirst()) {
                 DownloadInfo item;
@@ -128,7 +128,7 @@ public class DownloadDAO extends BaseDAO {
             if (cursor != null) {
                 cursor.close();
             }
-            databaseManager.closeConnection();
+            dbManager.closeConnection();
         }
         return result;
     }

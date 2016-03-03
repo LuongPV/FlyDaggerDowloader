@@ -1,4 +1,4 @@
-package mont.cristo.flydaggerdownloader.database.dao;
+package mont.cristo.flydaggerdownloader.database.dao.sqlite;
 
 public class DAOUpgradeInfo {
     private int oldVersion;
