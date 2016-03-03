@@ -1,5 +1,7 @@
 package mont.cristo.flydaggerdownloader.database.dao.sqlite;
 
+import mont.cristo.flydaggerdownloader.database.manager.base.Database;
+import mont.cristo.flydaggerdownloader.database.manager.base.InvalidDatabaseException;
 import mont.cristo.flydaggerdownloader.database.manager.sqlite.DBManager;
 
 public abstract class BaseDAO implements DAO {
@@ -8,8 +10,11 @@ public abstract class BaseDAO implements DAO {
 
     private DAOUpgradeInfo[] daoUpgradeInfos;
 
-    public BaseDAO(DBManager dbManager) {
-        this.dbManager = dbManager;
+    public BaseDAO(Database database) {
+        if (!(database instanceof DBManager)) {
+            throw new InvalidDatabaseException("Database invalid, must be SQlite database");
+        }
+        this.dbManager = (DBManager) database;
         daoUpgradeInfos = getUpgradeInfos();
     }
 

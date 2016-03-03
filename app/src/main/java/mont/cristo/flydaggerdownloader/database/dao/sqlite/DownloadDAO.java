@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mont.cristo.flydaggerdownloader.database.dao.Download;
-import mont.cristo.flydaggerdownloader.database.manager.sqlite.DBManager;
+import mont.cristo.flydaggerdownloader.database.manager.base.Database;
 import mont.cristo.flydaggerdownloader.helpers.logger.base.Logger;
 import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
 
@@ -24,8 +24,8 @@ public class DownloadDAO extends BaseDAO implements Download {
     // Available since version 3
     private static final String COLUMN_PROGRESS = "progress";
 
-    public DownloadDAO(DBManager dbManager) {
-        super(dbManager);
+    public DownloadDAO(Database database) {
+        super(database);
     }
 
     @Override

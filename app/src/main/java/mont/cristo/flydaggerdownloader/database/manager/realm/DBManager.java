@@ -31,8 +31,12 @@ public class DBManager implements Database {
     }
 
     public void upgradeAllTable(long oldVersion) {
-        for (DAO dao : DAOCreator.getAllDAO(realm)) {
+        for (DAO dao : DAOCreator.getAllDAO(this)) {
             dao.upgradeTable(oldVersion);
         }
+    }
+
+    public Realm getRealm() {
+        return realm;
     }
 }

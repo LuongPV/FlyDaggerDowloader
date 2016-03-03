@@ -10,6 +10,7 @@ import io.realm.internal.Table;
 import mont.cristo.flydaggerdownloader.database.dao.Download;
 import mont.cristo.flydaggerdownloader.database.dao.realm.BaseDAO;
 import mont.cristo.flydaggerdownloader.database.dao.realm.DAOUpgradeInfo;
+import mont.cristo.flydaggerdownloader.database.manager.base.Database;
 import mont.cristo.flydaggerdownloader.helpers.network.ByteRange;
 import mont.cristo.flydaggerdownloader.helpers.network.DownloadInfo;
 
@@ -20,8 +21,8 @@ public class DownloadDAO extends BaseDAO implements Download {
     // Available since version 3
     private static final String FIELD_PROGRESS = "progress";
 
-    public DownloadDAO(Realm realm) {
-        super(realm);
+    public DownloadDAO(Database database) {
+        super(database);
     }
 
     @Override

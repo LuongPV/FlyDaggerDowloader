@@ -3,6 +3,7 @@ package mont.cristo.flydaggerdownloader.database.dao.sqlite;
 import java.util.ArrayList;
 import java.util.List;
 
+import mont.cristo.flydaggerdownloader.database.manager.base.Database;
 import mont.cristo.flydaggerdownloader.database.manager.sqlite.DBManager;
 
 public class DAOCreator {
@@ -13,11 +14,11 @@ public class DAOCreator {
 
     }
 
-    public static DAO getDAO(DAOType daoType, DBManager dbManager) {
+    public static DAO getDAO(DAOType daoType, Database database) {
         DAO dao = null;
         switch (daoType) {
             case DOWNLOAD:
-                dao = new DownloadDAO(dbManager);
+                dao = new DownloadDAO(database);
                 break;
         }
         return dao;
@@ -25,13 +26,13 @@ public class DAOCreator {
 
     /**
      * Get all DAO
-     * @param dbManager Each DAO must have corrective database access
+     * @param database Each DAO must have corrective database access
      * @return List all DAO
      */
-    public static List<DAO> getAllDAO(DBManager dbManager) {
+    public static List<DAO> getAllDAO(Database database) {
         List<DAO> listDAO = new ArrayList<>();
         for (DAOType daoType : DAOType.values()) {
-            listDAO.add(getDAO(daoType, dbManager));
+            listDAO.add(getDAO(daoType, database));
         }
         return listDAO;
     };
