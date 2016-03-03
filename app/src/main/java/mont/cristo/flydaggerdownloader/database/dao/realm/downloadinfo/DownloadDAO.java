@@ -62,7 +62,7 @@ public class DownloadDAO extends BaseDAO implements Download {
 
     public boolean insertDownloadInfo(DownloadInfo downloadInfo) {
         long result = -1;
-        realm.beginTransaction();
+        Realm realm = transactionManager.beginTransaction(dbManager.getRealm());
         RealmDownloadInfo realmDownloadInfo = realm.createObject(RealmDownloadInfo.class);
         realmDownloadInfo.setUrlLocal(downloadInfo.getUrlLocal());
         realmDownloadInfo.setUrlRemote(downloadInfo.getUrlRemote());
@@ -70,13 +70,13 @@ public class DownloadDAO extends BaseDAO implements Download {
         realmByteRange.setIndexStart(downloadInfo.getByteRange().getIndexStart());
         realmByteRange.setIndexEnd(downloadInfo.getByteRange().getIndexEnd());
         realmDownloadInfo.setRealmByteRange(realmByteRange);
-        realm.commitTransaction();
+        transactionManager.commitTransaction(realm);
         return result > 0;
     }
 
     public List<DownloadInfo> getAllDownloadInfo() {
         List<DownloadInfo> result = new ArrayList<>();
-        RealmResults<RealmDownloadInfo> realmDownloadInfos = realm.where(RealmDownloadInfo.class).findAll();
+        RealmResults<RealmDownloadInfo> realmDownloadInfos = dbManager.getRealm().where(RealmDownloadInfo.class).findAll();
         for (RealmDownloadInfo realmDownloadInfo : realmDownloadInfos) {
             result.add(new DownloadInfo(realmDownloadInfo.getUrlRemote(),
                     realmDownloadInfo.getUrlLocal(),

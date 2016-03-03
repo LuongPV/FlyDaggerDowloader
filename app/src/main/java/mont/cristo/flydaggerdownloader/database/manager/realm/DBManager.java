@@ -17,7 +17,19 @@ public class DBManager implements Database {
 
     private Realm realm;
 
+    private Context context;
+
     public DBManager(Context context) {
+        this.context = context;
+    }
+
+    public void upgradeAllTable(long oldVersion) {
+        for (DAO dao : DAOCreator.getAllDAO(this)) {
+            dao.upgradeTable(oldVersion);
+        }
+    }
+
+    public Realm getRealm() {
         realm = Realm.getInstance(new RealmConfiguration.Builder(context)
                 .migration(new RealmMigration() {
 
@@ -28,15 +40,6 @@ public class DBManager implements Database {
                 })
                 .schemaVersion(DATABASE_VERSION)
                 .build());
-    }
-
-    public void upgradeAllTable(long oldVersion) {
-        for (DAO dao : DAOCreator.getAllDAO(this)) {
-            dao.upgradeTable(oldVersion);
-        }
-    }
-
-    public Realm getRealm() {
         return realm;
     }
 }
