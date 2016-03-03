@@ -4,7 +4,6 @@ import io.realm.Realm;
 import mont.cristo.flydaggerdownloader.database.manager.base.Database;
 import mont.cristo.flydaggerdownloader.database.manager.base.InvalidDatabaseException;
 import mont.cristo.flydaggerdownloader.database.manager.realm.DBManager;
-import mont.cristo.flydaggerdownloader.database.manager.realm.TransactionManager;
 
 public abstract class BaseDAO implements DAO {
 
@@ -12,14 +11,11 @@ public abstract class BaseDAO implements DAO {
 
     private DAOUpgradeInfo[] daoUpgradeInfos;
 
-    protected TransactionManager transactionManager;
-
     public BaseDAO(Database database) {
         if (!(database instanceof DBManager)) {
             throw new InvalidDatabaseException("Database invalid, must be Realm");
         }
         this.dbManager = (DBManager) database;
-        transactionManager = new TransactionManager();
         daoUpgradeInfos = getUpgradeInfos();
     }
 
